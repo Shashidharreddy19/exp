@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+</head>
+<body>
+    <h1>QR Code for Phone Number</h1>
+    <input type="text" id="phoneNumber" placeholder="Enter phone number" />
+    <button id="generateQR">Generate QR Code</button>
+    <canvas id="qrCanvas"></canvas>
+
+    <script>
+        document.getElementById('generateQR').onclick = function() {
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const qr = new QRious({
+                element: document.getElementById('qrCanvas'),
+                value: `http://localhost:3000/send-message?number=${encodeURIComponent(phoneNumber)}`,
+                size: 200
+            });
+        };
+    </script>
+</body>
+</html>
